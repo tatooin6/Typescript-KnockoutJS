@@ -1,3 +1,9 @@
+# IMPORTANT!
+
+This repository is a copied version from a typescript-knockoutjs starter project
+
+You can find the root repository on this [Link](https://github.com/microsoft/TypeScript-Knockout-Starter)
+
 # TypeScript Knockout Starter
 
 This quick start guide will teach you how to wire up TypeScript with [Knockout.js](http://knockoutjs.com/).
