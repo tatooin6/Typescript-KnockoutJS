@@ -20,7 +20,7 @@
 
         <h1>KnockoutTS Collections TS</h1>
         <h2 data-bind="text: modelTitle"></h2>
-
+        <button data-bind="click: addSeat">Reserve another seat</button>
         <h3>Your seats reservations <span data-bind="text: seats().length"></span> </h3>
 
         <table>
@@ -35,9 +35,9 @@
           <tbody data-bind="foreach: seats">
             <tr>
               <td><input type="text" data-bind="value: name"></td>
-              <td data-bind="text: meal().mealName"></td>
+              <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select> </td>
               <td data-bind="text: formattedPrice"></td>
-              <td><a href="#">Remove</a> </td>
+              <td><a href="#" data-bind="click: $root.removeSeat">Remove</a> </td>
             </tr>
           </tbody>
         </table>

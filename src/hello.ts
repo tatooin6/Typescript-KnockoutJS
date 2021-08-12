@@ -29,10 +29,15 @@ class HelloViewModel {
   framework: KnockoutObservable<string>
   availableMeals: IMeal[]
   seats: KnockoutObservableArray<SeatReservation>
+  totalSurcharge: KnockoutComputed<number>
+
+  addSeat: () => void
+  removeSeat: (seat: SeatReservation) => void
 
   constructor() {
-    this.language = ko.observable("language");
-    this.framework = ko.observable("framework");
+    let self = this
+    this.language = ko.observable("typescript");
+    this.framework = ko.observable("knockoutJS");
 
     this.modelTitle = ko.observable("Resevation View Model")
     this.availableMeals = [
@@ -47,7 +52,16 @@ class HelloViewModel {
       new SeatReservation("Raul", ko.observable(this.availableMeals[0])),
 
     ])
+    // OPERATIONS
+    this.addSeat = function() {
+      this.seats.push(new SeatReservation("", ko.observable(this.availableMeals[0])))
+    }
+    this.removeSeat = function(seat: SeatReservation) {
+      // console.log(self.seats)
+      self.seats.remove(seat)
+    }
   }
+
 }
 
 ko.applyBindings(new HelloViewModel(), document.querySelector("knockout-app"));

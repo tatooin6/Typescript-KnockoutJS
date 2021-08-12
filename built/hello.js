@@ -15,8 +15,9 @@ define(["require", "exports", "knockout"], function (require, exports, ko) {
     }());
     var HelloViewModel = /** @class */ (function () {
         function HelloViewModel() {
-            this.language = ko.observable("language");
-            this.framework = ko.observable("framework");
+            var self = this;
+            this.language = ko.observable("typescript");
+            this.framework = ko.observable("knockoutJS");
             this.modelTitle = ko.observable("Resevation View Model");
             this.availableMeals = [
                 { mealName: "sandwich", price: 5.50 },
@@ -28,6 +29,14 @@ define(["require", "exports", "knockout"], function (require, exports, ko) {
                 new SeatReservation("Peter", ko.observable(this.availableMeals[0])),
                 new SeatReservation("Raul", ko.observable(this.availableMeals[0])),
             ]);
+            // OPERATIONS
+            this.addSeat = function () {
+                this.seats.push(new SeatReservation("", ko.observable(this.availableMeals[0])));
+            };
+            this.removeSeat = function (seat) {
+                // console.log(self.seats)
+                self.seats.remove(seat);
+            };
         }
         return HelloViewModel;
     }());
