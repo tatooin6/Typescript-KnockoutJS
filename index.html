@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello Knockout!</title>
+    </head>
+    <body>
+      <div id="knockout-app">
+        <p>
+        Hello from
+        <strong data-bind="text: language">todo</strong>
+        and
+        <strong data-bind="text: framework">todo</strong>!
+        </p>
+
+        <p>Language: <input data-bind="value: language" /></p>
+        <p>Framework: <input data-bind="value: framework" /></p>
+
+        <hr>
+
+        <h1>KnockoutTS Collections TS</h1>
+        <h2 data-bind="text: modelTitle"></h2>
+
+        <h3>Your seats reservations <span data-bind="text: seats().length"></span> </h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Passenger Name</th>
+              <th>Meal</th>
+              <th>Surcharge</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody data-bind="foreach: seats">
+            <tr>
+              <td><input type="text" data-bind="value: name"></td>
+              <td data-bind="text: meal().mealName"></td>
+              <td data-bind="text: formattedPrice"></td>
+              <td><a href="#">Remove</a> </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+        <script src="./externals/require.js"></script>
+        <script src="./built/require-config.js"></script>
+        <script>
+            require(["built/hello"]);
+        </script>
+    </body>
+</html>
